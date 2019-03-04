@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="DFr-VV-s2m" id="5Hj-Vk-zgD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todome" id="rdg-CW-6LS"/>
+                    <navigationItem key="navigationItem" title="Todome" id="rdg-CW-6LS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mkt-9u-AcK">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="DFr-VV-s2m" id="gpx-ck-SpK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xdc-ka-HfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
