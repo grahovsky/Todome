@@ -16,27 +16,19 @@ class TodoListViewContoller: UITableViewController {
     
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let todoListArray = defaults.array(forKey: "TodoListArray") as? [String] {
-//            itemArray = todoListArray
-//        }
+        //        if let todoListArray = defaults.array(forKey: "TodoListArray") as? [String] {
+        //            itemArray = todoListArray
+        //        }
         
         //print(dataFilePath)
         
-        let newItem = Item()
-        newItem.title = "Find Mike"
+        //createData()
         
-        let newItem2 = Item()
-        newItem2.title = "Buy Eggos"
-        
-        let newItem3 = Item()
-        newItem3.title = "See Friends"
-        
-        itemArray.append(newItem)
-        itemArray.append(newItem2)
-        itemArray.append(newItem3)
+        loadItems()
         
     }
     
@@ -136,6 +128,35 @@ class TodoListViewContoller: UITableViewController {
         
     }
     
+    func loadItems() {
+        
+        guard let data = try? Data(contentsOf: dataFilePath!) else { return }
+        
+        let decoder = PropertyListDecoder()
+        do {
+            itemArray = try decoder.decode([Item].self, from: data)
+        } catch {
+            print("Error decoding item array, \(error.localizedDescription)")
+        }
+        
+    }
+    
+    func createData() {
+        
+        let newItem = Item()
+        newItem.title = "Find Mike"
+        
+        let newItem2 = Item()
+        newItem2.title = "Buy Eggos"
+        
+        let newItem3 = Item()
+        newItem3.title = "See Friends"
+        
+        itemArray.append(newItem)
+        itemArray.append(newItem2)
+        itemArray.append(newItem3)
+    
+    }
     
 }
 
