@@ -64,6 +64,10 @@ class TodoListViewContoller: UITableViewController {
         //print(itemArray[indexPath.row])
        
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
+        
         //self.defaults.set(self.itemArray as Any, forKey: "TodoListArray")
         self.saveItems()
         
