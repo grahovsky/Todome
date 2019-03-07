@@ -31,7 +31,7 @@ class TodoListViewContoller: UITableViewController {
         
         //createData()
         
-        //loadItems()
+        loadItems()
         
     }
     
@@ -128,18 +128,16 @@ class TodoListViewContoller: UITableViewController {
         
     }
     
-//    func loadItems() {
-//
-//        guard let data = try? Data(contentsOf: dataFilePath!) else { return }
-//
-//        let decoder = PropertyListDecoder()
-//        do {
-//            itemArray = try decoder.decode([Item].self, from: data)
-//        } catch {
-//            print("Error decoding item array, \(error.localizedDescription)")
-//        }
-//
-//    }
+    func loadItems() {
+
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetchig data from context, \(error.localizedDescription)")
+        }
+
+    }
     
     func createData() {
         
