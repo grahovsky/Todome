@@ -12,6 +12,7 @@ import CoreData
 class TodoListViewContoller: UITableViewController {
 
     var itemArray = [Item]()
+    @IBOutlet weak var searchBar: UISearchBar!
     
     //let defaults = UserDefaults.standard
     
@@ -31,12 +32,14 @@ class TodoListViewContoller: UITableViewController {
         
         //createData()
         
+        searchBar.delegate = self
+        
         loadItems()
         
     }
     
     
-    // MARK: TableView Datasource Metods
+    // MARK: - TableView Datasource Metods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
@@ -76,7 +79,7 @@ class TodoListViewContoller: UITableViewController {
     }
     
     
-    // MARK: Add new Items
+    // MARK: - Add new Items
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
    
@@ -118,7 +121,7 @@ class TodoListViewContoller: UITableViewController {
     }
     
     
-    // MARK: Model Manipulation Methods
+    // MARK: - Model Manipulation Methods
     
     func saveItems() {
     
@@ -132,14 +135,15 @@ class TodoListViewContoller: UITableViewController {
         
     }
     
-    func loadItems() {
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
 
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
         do {
             itemArray = try context.fetch(request)
         } catch {
             print("Error fetchig data from context, \(error.localizedDescription)")
         }
+        
+        tableView.reloadData()
 
     }
     
@@ -159,6 +163,30 @@ class TodoListViewContoller: UITableViewController {
         itemArray.append(newItem3)
     
     }
+    
+    
+}
+
+
+//MARK: - Search bar methods
+
+extension TodoListViewContoller: UISearchBarDelegate {
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        if !searchBar.text!.isEmpty {
+            request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!) //cd - case diacritic insensitive
+        }
+            
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItems(with: request)
+        
+    }
+    
     
 }
 
