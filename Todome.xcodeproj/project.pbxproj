@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B5191BC12233EFE9006311D6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5191BC02233EFE9006311D6 /* CategoryViewController.swift */; };
+		B5191BC322343A70006311D6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5191BC222343A70006311D6 /* Data.swift */; };
 		B53EAD3822305F81007999C8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B53EAD3622305F81007999C8 /* DataModel.xcdatamodeld */; };
 		B59728E7222DB0DB00161E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59728E6222DB0DB00161E24 /* AppDelegate.swift */; };
 		B59728E9222DB0DB00161E24 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59728E8222DB0DB00161E24 /* TodoListViewController.swift */; };
@@ -21,6 +22,7 @@
 		541A9BB0CB972899984274A0 /* Pods_Todome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B03F280C73A644EAB77AD3E /* Pods-Todome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todome.debug.xcconfig"; path = "Target Support Files/Pods-Todome/Pods-Todome.debug.xcconfig"; sourceTree = "<group>"; };
 		B5191BC02233EFE9006311D6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		B5191BC222343A70006311D6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		B53EAD3722305F81007999C8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		B59728E3222DB0DB00161E24 /* Todome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59728E6222DB0DB00161E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +52,6 @@
 				5B03F280C73A644EAB77AD3E /* Pods-Todome.debug.xcconfig */,
 				D70EDE7326AB8DDB34E277D1 /* Pods-Todome.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -66,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				B53EAD3622305F81007999C8 /* DataModel.xcdatamodeld */,
+				B5191BC222343A70006311D6 /* Data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5191BC12233EFE9006311D6 /* CategoryViewController.swift in Sources */,
+				B5191BC322343A70006311D6 /* Data.swift in Sources */,
 				B59728E9222DB0DB00161E24 /* TodoListViewController.swift in Sources */,
 				B53EAD3822305F81007999C8 /* DataModel.xcdatamodeld in Sources */,
 				B59728E7222DB0DB00161E24 /* AppDelegate.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,6 +28,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ///Users/konstantin/Library/Developer/CoreSimulator/Devices/13BED165-096C-4982-98E5-5C625DEBD8D5/data/Containers/Data/Application/D0D79E2F-087E-4D40-A3DB-6F94928AE394/Library
         
         // Preferences/com.grahovsky.Todome.plist
+        
+        let data = Data()
+        data.name = "Konstantin"
+        data.age = 33
+        
+        
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(data)
+            }
+            
+        } catch {
+            print("Error initialising new realm, \(error.localizedDescription)")
+        }
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        ///Users/konstantin/Library/Developer/CoreSimulator/Devices/13BED165-096C-4982-98E5-5C625DEBD8D5/data/Containers/Data/Application/133E2234-B433-4A8C-A8C2-F2E120F13B6B/Documents/
         
         return true
     }
