@@ -14,9 +14,12 @@
 		B59728EC222DB0DB00161E24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59728EA222DB0DB00161E24 /* Main.storyboard */; };
 		B59728EE222DB0DF00161E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59728ED222DB0DF00161E24 /* Assets.xcassets */; };
 		B59728F1222DB0DF00161E24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59728EF222DB0DF00161E24 /* LaunchScreen.storyboard */; };
+		BA9BBBF5C14897D8245B593B /* Pods_Todome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541A9BB0CB972899984274A0 /* Pods_Todome.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		541A9BB0CB972899984274A0 /* Pods_Todome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B03F280C73A644EAB77AD3E /* Pods-Todome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todome.debug.xcconfig"; path = "Target Support Files/Pods-Todome/Pods-Todome.debug.xcconfig"; sourceTree = "<group>"; };
 		B5191BC02233EFE9006311D6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		B53EAD3722305F81007999C8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		B59728E3222DB0DB00161E24 /* Todome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +29,7 @@
 		B59728ED222DB0DF00161E24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B59728F0222DB0DF00161E24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B59728F2222DB0DF00161E24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D70EDE7326AB8DDB34E277D1 /* Pods-Todome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todome.release.xcconfig"; path = "Target Support Files/Pods-Todome/Pods-Todome.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,12 +37,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA9BBBF5C14897D8245B593B /* Pods_Todome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B7433E33D325B673E59A1C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B03F280C73A644EAB77AD3E /* Pods-Todome.debug.xcconfig */,
+				D70EDE7326AB8DDB34E277D1 /* Pods-Todome.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		524A3E4F27D54FA27D968762 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				541A9BB0CB972899984274A0 /* Pods_Todome.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B53EAD30222EF4BE007999C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +102,8 @@
 			children = (
 				B59728E5222DB0DB00161E24 /* Todome */,
 				B59728E4222DB0DB00161E24 /* Products */,
+				2B7433E33D325B673E59A1C1 /* Pods */,
+				524A3E4F27D54FA27D968762 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B59728F5222DB0DF00161E24 /* Build configuration list for PBXNativeTarget "Todome" */;
 			buildPhases = (
+				49A4598B33D9EC92F51DF1ED /* [CP] Check Pods Manifest.lock */,
 				B59728DF222DB0DB00161E24 /* Sources */,
 				B59728E0222DB0DB00161E24 /* Frameworks */,
 				B59728E1222DB0DB00161E24 /* Resources */,
+				16CA9151A705354996291EE8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +194,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16CA9151A705354996291EE8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Todome/Pods-Todome-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Todome/Pods-Todome-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49A4598B33D9EC92F51DF1ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Todome-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B59728DF222DB0DB00161E24 /* Sources */ = {
@@ -320,6 +396,7 @@
 		};
 		B59728F6222DB0DF00161E24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B03F280C73A644EAB77AD3E /* Pods-Todome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -338,6 +415,7 @@
 		};
 		B59728F7222DB0DF00161E24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D70EDE7326AB8DDB34E277D1 /* Pods-Todome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
