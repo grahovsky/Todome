@@ -29,17 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Preferences/com.grahovsky.Todome.plist
         
-        let data = Data()
-        data.name = "Konstantin"
-        data.age = 33
         
         
         do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(data)
-            }
-            
+            let realm = try Realm()            
         } catch {
             print("Error initialising new realm, \(error.localizedDescription)")
         }
