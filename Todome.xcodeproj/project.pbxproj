@@ -66,8 +66,8 @@
 		B53EAD30222EF4BE007999C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B5191BC42234432B006311D6 /* Item.swift */,
 				B5191BC622344376006311D6 /* Category.swift */,
+				B5191BC42234432B006311D6 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

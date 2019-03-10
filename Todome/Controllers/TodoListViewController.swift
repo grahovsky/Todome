@@ -124,31 +124,20 @@ class TodoListViewContoller: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             //what will happen once the user clicks the Add Item button on our UIAlert
             
-            guard let newItemText = tempTextField.text else { return }
+            guard !tempTextField.text!.isEmpty else { return }
             
-            if newItemText.isEmpty {
-                return
-            }
-            
-            if let newItemText = tempTextField.text {
-                
-                if let currentCategory = self.selectedCategory {
-                    
-                    do {
-                        try self.realm.write {
-                            let newItem = Item()
-                            newItem.title = newItemText
-                            newItem.dateCreated = Date()
-                            
-                            currentCategory.items.append(newItem)
-
-                        }
-                    } catch {
-                        print("Error saving realm, \(error.localizedDescription)")
+            if let currentCategory = self.selectedCategory {
+                do {
+                    try self.realm.write {
+                        let newItem = Item()
+                        newItem.title = tempTextField.text!
+                        newItem.dateCreated = Date()
+                        
+                        currentCategory.items.append(newItem)
                     }
-                    
+                } catch {
+                    print("Error saving new items, \(error.localizedDescription)")
                 }
-                
             }
             
             self.tableView.reloadData()
@@ -197,30 +186,30 @@ class TodoListViewContoller: UITableViewController {
 //MARK: - Search bar methods
 
 extension TodoListViewContoller: UISearchBarDelegate {
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
+        
         todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
-
+        
         tableView.reloadData()
         
     }
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
+        
         if searchBar.text?.count == 0 {
-
+            
             loadItems()
-
+            
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
-
-
+            
+            
         }
-
+        
     }
-
-
+    
+    
 }
 
