@@ -9,14 +9,12 @@
 import UIKit
 import RealmSwift
 
-class TodoListViewContoller: UITableViewController {
+class TodoListViewContoller: SwipeTableViewController {
     
     let realm = try! Realm()
     //lazy var realm = (UIApplication.shared.delegate as! AppDelegate).realm!
     
     var todoItems: Results<Item>?
-    
-    @IBOutlet weak var searchBar: UISearchBar!
     
     //let defaults = UserDefaults.standard
     
@@ -31,12 +29,8 @@ class TodoListViewContoller: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        print(dataFilePath)
-        
-        //createData()
-        
-        //        searchBar.delegate = self
+//        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//        print(dataFilePath)
         
     }
     
@@ -49,7 +43,7 @@ class TodoListViewContoller: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row] {
             
@@ -89,29 +83,6 @@ class TodoListViewContoller: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            if let item = todoItems?[indexPath.row] {
-                
-                do {
-                    try realm.write {
-                        realm.delete(item)
-                    }
-                } catch {
-                    print("Error delete status, \(error.localizedDescription)")
-                }
-                
-            }
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
-    }
-    
     
     // MARK: - Add new Items
     
@@ -177,6 +148,24 @@ class TodoListViewContoller: UITableViewController {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         
         tableView.reloadData()
+        
+    }
+    
+    //MARK: - Delete Data From Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let itemForDeletion = self.todoItems?[indexPath.row] {
+            
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            } catch {
+                print("Error delete item, \(error.localizedDescription)")
+            }
+            
+        }
         
     }
     
