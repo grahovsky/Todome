@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var realm: Realm!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,10 +30,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Preferences/com.grahovsky.Todome.plist
         
-        
-        
+//        let config = Realm.Configuration(
+//            schemaVersion: 1,
+//            migrationBlock: { migration, oldSchemaVersion in
+//                if (oldSchemaVersion < 1) {
+//                    // Nothing to do!
+//                    // Realm will automatically detect new properties and removed properties
+//                    // And will update the schema on disk automatically
+//                }
+//        })
+//        Realm.Configuration.defaultConfiguration = config
+
         do {
-            let realm = try Realm()            
+            realm = try Realm()
         } catch {
             print("Error initialising new realm, \(error.localizedDescription)")
         }
@@ -75,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 
 }
 
