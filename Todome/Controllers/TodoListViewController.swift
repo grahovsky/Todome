@@ -30,10 +30,6 @@ class TodoListViewContoller: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        if let todoListArray = defaults.array(forKey: "TodoListArray") as? [String] {
-        //            todoItems = todoListArray
-        //        }
-        
         let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(dataFilePath)
         
@@ -75,15 +71,19 @@ class TodoListViewContoller: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //print(todoItems[indexPath.row])
+        if let item = todoItems?[indexPath.row] {
+            
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print("Error saving done status, \(error.localizedDescription)")
+            }
+            
+        }
         
-        //todoItems[indexPath.row].done = !todoItems[indexPath.row].done
-        
-        //        context.delete(todoItems[indexPath.row])
-        //        todoItems.remove(at: indexPath.row)
-        
-        //self.defaults.set(self.todoItems as Any, forKey: "TodoListArray")
-        //self.saveItems()
+        tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -117,8 +117,7 @@ class TodoListViewContoller: UITableViewController {
                             newItem.title = newItemText
                             
                             currentCategory.items.append(newItem)
-                            
-                           // self.realm.add(newItem)
+
                         }
                     } catch {
                         print("Error saving realm, \(error.localizedDescription)")
