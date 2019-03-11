@@ -25,6 +25,13 @@ class CategoryViewController: SwipeTableViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+    }
+    
     //MARK: - TableView Datasource Methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +46,8 @@ class CategoryViewController: SwipeTableViewController {
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet"
         cell.backgroundColor = UIColor(hexString: categories?[indexPath.row].colorHex ?? "4894D6")
+        
+        cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
         
         return cell
         
